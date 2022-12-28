@@ -13,9 +13,13 @@
                     </div>               
                 </div>
             </div>
-            <div class="text-center">
+            <div class="text-center" v-if="!isEqual">
                 <p class="text-xl mb-4 lg:text-2xl xl:text-3xl"><span class="font-semibold">{{ usersSortedByStreak[0]?.usedName }}</span> está na ofensiva mais longa.</p>
                 <p class="font-light">A diferença de dias entre a ofensiva atual dos dois é de {{ usersSortedByStreak[0]?.streak - usersSortedByStreak[1]?.streak }} dias.</p>
+            </div>
+            <div class="text-center" v-else>
+                <p class="text-xl mb-4 lg:text-2xl xl:text-3xl">A ofensiva atual dos dois possui o mesmo número de dias.</p>
+                <p class="font-light">Portanto, a diferença de dias entre a ofensiva atual de ambos é zero.</p>
             </div>
         </div>
     </section>
@@ -24,6 +28,11 @@
 <script>
     export default {
         name: "StreakSection",
+        data(){
+            return {
+                isEqual: true
+            }
+        },  
         props: [
             "usersData"
         ],
@@ -36,11 +45,13 @@
                     const sortedUsersData = JSON.parse(JSON.stringify(this.usersData));
                     console.log(sortedUsersData);
                     sortedUsersData.sort((a, b) => {
-                        return b.streak - a.streak;
+                        const difference = b.streak - a.streak;
+                        if (difference != 0){this.isEqual = false}
+                        return difference;
                     })
                     const maxStreak = sortedUsersData[0].streak;
                     sortedUsersData.map(user => {
-                        user["barWidth"] = Math.round(100*(user.streak/maxStreak))
+                        user["barWidth"] = user.streak == 0 ? 1 : Math.round(100*(user.streak/maxStreak));
                         user["usedName"] = user.name ? user.name : user.username;
                     })
                     return sortedUsersData;

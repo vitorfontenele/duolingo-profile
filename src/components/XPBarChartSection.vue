@@ -13,10 +13,14 @@
                     </div>               
                 </div>
             </div>
-            <div class="text-center">
+            <div class="text-center" v-if="!isEqual">
                 <p class="text-xl mb-4 lg:text-2xl xl:text-3xl"><span class="font-semibold">{{ usersSortedByXP[0]?.usedName }}</span> possui mais XP.</p>
                 <p class="font-light"><span>{{ usersSortedByXP[1]?.usedName }}</span> tem {{ usersSortedByXP[1]?.barWidth }}% do total de XP de <span class="font-bold">{{ usersSortedByXP[0]?.usedName }}</span>.</p>
                 <p class="font-light">A diferença de XP entre os dois é de {{ roundToOne((usersSortedByXP[0]?.totalXp - usersSortedByXP[1]?.totalXp)/1000) }}k pontos de XP.</p>
+            </div>
+            <div class="text center" v-else>
+                <p class="text-xl mb-4 lg:text-2xl xl:text-3xl">Os dois usuários possuem o mesmo total de XP.</p>
+                <p>Portanto, a diferença de XP entre os dois é zero.</p>
             </div>
         </div>
     </section>
@@ -25,6 +29,11 @@
 <script>
     export default {
         name: "XPBarChartSection",
+        data(){
+            return {
+                isEqual: true,
+            }
+        },
         props: [
             "usersData"
         ],
@@ -38,11 +47,13 @@
                 if (this.usersData.length > 0){
                     const sortedUsersData = JSON.parse(JSON.stringify(this.usersData));
                     sortedUsersData.sort((a, b) => {
-                        return b.totalXp - a.totalXp;
+                        const difference = b.totalXp - a.totalXp;
+                        if (difference != 0){this.isEqual = false}
+                        return difference;
                     })
                     const maxXP = sortedUsersData[0].totalXp;
                     sortedUsersData.map(user => {
-                        user["barWidth"] = Math.round(100*(user.totalXp/maxXP))
+                        user["barWidth"] = user.totalXp == 0 ? 1 : Math.round(100*(user.totalXp/maxXP));
                         user["usedName"] = user.name ? user.name : user.username;
                         user["roundedTotalXP"] = this.roundToOne(user.totalXp/1000);
                     })
