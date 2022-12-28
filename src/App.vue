@@ -26,6 +26,7 @@
       </section>
       <PersonalInfoSection :usersData="usersData" />
       <XPBarChartSection :usersData="usersData" />
+      <StreakSection :usersData="usersData" /> 
     </div>
   </div>
 </template>
@@ -34,11 +35,9 @@
   import axios from "axios"
   import PersonalInfoSection from "./components/PersonalInfoSection.vue";
   import XPBarChartSection from "./components/XPBarChartSection.vue";
+  import StreakSection from "./components/StreakSection.vue";
   export default {
     name: "App",
-    components: {
-      PersonalInfoSection
-    },
     data() {
         return {
             usernames: ["", ""],
@@ -66,6 +65,6 @@
             this.fetchUserInfo();
         }
     },
-    components: { PersonalInfoSection, XPBarChartSection }
+    components: { PersonalInfoSection, XPBarChartSection, StreakSection }
 }
 </script>
