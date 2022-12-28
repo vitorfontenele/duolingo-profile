@@ -27,6 +27,7 @@
       <PersonalInfoSection :usersData="usersData" />
       <XPBarChartSection :usersData="usersData" />
       <StreakSection :usersData="usersData" /> 
+      <XPByDaySection :usersData="usersData"/>
     </div>
   </div>
 </template>
@@ -36,6 +37,7 @@
   import PersonalInfoSection from "./components/PersonalInfoSection.vue";
   import XPBarChartSection from "./components/XPBarChartSection.vue";
   import StreakSection from "./components/StreakSection.vue";
+import XPByDaySection from "./components/XPByDaySection.vue";
   export default {
     name: "App",
     data() {
@@ -65,6 +67,6 @@
             this.fetchUserInfo();
         }
     },
-    components: { PersonalInfoSection, XPBarChartSection, StreakSection }
+    components: { PersonalInfoSection, XPBarChartSection, StreakSection, XPByDaySection }
 }
 </script>
