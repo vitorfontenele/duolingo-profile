@@ -10,18 +10,40 @@
                     <h3 class="font-semibold text-2xl text-center">{{ user.name ? user.name : user.username }}</h3>
                     <h4 class="font-semibold text-gray-700 text-sm text-center">{{ user.username }}</h4>
                     <div class="w-fit mt-1">
-                        <img class="max-w-[40px]" :src="`https://flaglog.com/codes/standardized-rectangle-120px/${user.profileCountry}.png`" alt="User country of origin">
+                        <img 
+                            class="max-w-[40px]" 
+                            :src="pickFlag(user)" 
+                            alt="User country of origin"
+                        >
                     </div>
                     <a class="rounded shadow uppercase bg-teal-100 hover:bg-teal-200 px-5 py-1 mt-2" :href="`https://www.duolingo.com/profile/${user.username}`" target="_blank">Perfil</a>
                 </div>
                 <div class="w-full flex justify-around">
                     <div>
-                        <h4 class="font-semibold text-center">{{ user.streak }}</h4>
-                        <h5 class="font-light">Dias seguidos</h5>
+                        <div class="flex justify-center items-center gap-x-1">
+                            <div>
+                                <img 
+                                    src="https://d35aaqx5ub95lt.cloudfront.net/images/398e4298a3b39ce566050e5c041949ef.svg" 
+                                    alt="Fire for Duolingo streak"
+                                    class="h-5"
+                                >
+                            </div>
+                            <h4 class="font-semibold text-center">{{ user.streak }}</h4>
+                        </div>
+                        <h5 class="font-light text-center">Dias seguidos</h5>
                     </div>
                     <div>
-                        <h4 class="font-semibold text-center">{{ user.totalXp }}</h4>
-                        <h5 class="font-light">Total XP</h5>
+                        <div class="flex justify-center items-center gap-x-1">
+                            <div>
+                                <img 
+                                    src="https://d35aaqx5ub95lt.cloudfront.net/images/profile/01ce3a817dd01842581c3d18debcbc46.svg" 
+                                    alt="Ray for Duolingo Total XP"
+                                    class="h-5"
+                                >
+                            </div>
+                            <h4 class="font-semibold text-center">{{ user.totalXp }}</h4>
+                        </div>
+                        <h5 class="font-light text-center">Total XP</h5>
                     </div>
                 </div>
             </article>
@@ -33,8 +55,16 @@
     export default {
         name: "PersonalInfoSection",
         props: [
-            "usersData",
-            "title"
-        ]
+            "usersData"
+        ],
+        methods: {
+            pickFlag(user){
+                if (user.profileCountry){
+                    return `https://flaglog.com/codes/standardized-rectangle-120px/${user.profileCountry}.png`;
+                } else {
+                    return "unknown-country.png";
+                }
+            }
+        }
     }
 </script>

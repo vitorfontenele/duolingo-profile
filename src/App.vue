@@ -24,7 +24,8 @@
             @click="compare">Comparar</button>
         </div>
       </section>
-      <PersonalInfoSection :usersData="usersData" title="Título" />
+      <PersonalInfoSection :usersData="usersData" />
+      <XPBarChartSection :usersData="usersData" />
     </div>
   </div>
 </template>
@@ -32,6 +33,7 @@
 <script>
   import axios from "axios"
   import PersonalInfoSection from "./components/PersonalInfoSection.vue";
+  import XPBarChartSection from "./components/XPBarChartSection.vue";
   export default {
     name: "App",
     components: {
@@ -64,10 +66,6 @@
             this.fetchUserInfo();
         }
     },
-    components: { PersonalInfoSection }
+    components: { PersonalInfoSection, XPBarChartSection }
 }
 </script>
-
-<style scoped>
-
-</style>
