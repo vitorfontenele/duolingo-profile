@@ -46,6 +46,7 @@
             usersSortedByXP(){
                 if (this.usersData.length > 0){
                     const sortedUsersData = JSON.parse(JSON.stringify(this.usersData));
+                    this.isEqual = true;
                     sortedUsersData.sort((a, b) => {
                         const difference = b.totalXp - a.totalXp;
                         if (difference != 0){this.isEqual = false}
@@ -58,7 +59,7 @@
                         user["usedName"] = user.name ? user.name : user.username;
                         user["roundedTotalXP"] = this.roundToOne(user.totalXp/1000);
                     })
-                    console.log(this.usersData);
+                    //console.log(this.usersData);
                     return sortedUsersData;
                 } else {
                     return [];

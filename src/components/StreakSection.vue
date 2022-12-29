@@ -43,7 +43,7 @@
             usersSortedByStreak(){
                 if (this.usersData.length > 0){
                     const sortedUsersData = JSON.parse(JSON.stringify(this.usersData));
-                    console.log(sortedUsersData);
+                    this.isEqual = true;
                     sortedUsersData.sort((a, b) => {
                         const difference = b.streak - a.streak;
                         if (difference != 0){this.isEqual = false}

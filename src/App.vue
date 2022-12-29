@@ -55,7 +55,7 @@ import XPByDaySection from "./components/XPByDaySection.vue";
               try { 
                 const response = await axios.get(URL);
                 this.usersData.push(response.data.users[0]);
-                console.log(response.data.users[0]);
+                //console.log(response.data.users[0]);
               } catch (error){
                 console.log(error);
               }
@@ -63,7 +63,7 @@ import XPByDaySection from "./components/XPByDaySection.vue";
         },
         compare(e) {
             e.preventDefault();
-            console.log("Comparar");
+            //console.log("Comparar");
             this.fetchUserInfo();
         }
     },

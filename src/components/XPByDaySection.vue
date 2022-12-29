@@ -47,9 +47,11 @@
                         const XPPerDay = (user.totalXp/diffDays).toFixed(2);
                         user["XPPerDay"] = Number(XPPerDay);
                     })
+                    this.isEqual = true;
                     sortedUsersData.sort((a, b) => {
                         const difference = b.XPPerDay - a.XPPerDay;
                         if (difference != 0){this.isEqual = false}
+                        //console.log("isEqual", this.isEqual, "difference", difference);
                         return difference;
                     })
                     return sortedUsersData;
