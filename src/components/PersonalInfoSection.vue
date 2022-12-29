@@ -4,7 +4,7 @@
         <div class="flex flex-col gap-y-4 gap-x-4 sm:flex-row sm:justify-center">
             <article class="flex flex-col items-center bg-teal-50 shadow gap-y-9 py-8 sm:rounded sm:w-80" v-for="user in usersData">
                 <div>
-                    <img :src="`https://${user.picture}/xxlarge`" alt="User photo" height="150" width="150" class="rounded-full">
+                    <img :src="checkImage(user.picture)" alt="User photo" height="150" width="150" class="rounded-full">
                 </div>
                 <div class="flex flex-col items-center">
                     <h3 class="font-semibold text-2xl text-center">{{ user.name ? user.name : user.username }}</h3>
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+    import axios from "axios";
     export default {
         name: "PersonalInfoSection",
         props: [
@@ -63,6 +64,18 @@
                     return `https://flaglog.com/codes/standardized-rectangle-120px/${user.profileCountry}.png`;
                 } else {
                     return "unknown-country.png";
+                }
+            },
+            checkImage(link){
+                //https://${user.picture}/xxlarge
+                if (link){
+                    if (link.includes("default")){
+                        return "https://icon-library.com/images/unknown-person-icon/unknown-person-icon-19.jpg";
+                    } else {
+                        return `https://${link}/xxlarge`
+                    }
+                } else {
+                    return "https://icon-library.com/images/unknown-person-icon/unknown-person-icon-19.jpg";
                 }
             }
         }

@@ -2,11 +2,13 @@
     <section class="flex items-center sm:items-start justify-center min-h-screen px-4">
         <div class="flex flex-col gap-y-6">
             <h2 class="text-center font-semibold text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">Quem ganha mais XP por dia?</h2>
-            <div>
-                <div class="flex" v-for="(user, index) in usersSortedByXPPerDay" :key="index">
-                    <div class="h-8 bg-teal-200 px-5 py-5 min-w-0">
-                        <p>{{ user.XPPerDay }}</p>
+            <div class="flex flex-col gap-y-4 gap-x-4 sm:flex-row sm:justify-center">
+                <div v-for="(user, index) in usersSortedByXPPerDay">
+                    <div class="bg-teal-200 flex flex-col justify-center items-center px-6 py-8">
+                        <p class="font-semibold text-center text-xl lg:text-2xl">{{ user.XPPerDay }} XP</p>
+                        <p>por dia</p>
                     </div>
+                    <p class="text-center">{{ user.usedName }}</p>
                 </div>
             </div>
             <div class="text-center" v-if="!isEqual">

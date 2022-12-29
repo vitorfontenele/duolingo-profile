@@ -54,6 +54,7 @@
                     const maxXP = sortedUsersData[0].totalXp;
                     sortedUsersData.map(user => {
                         user["barWidth"] = user.totalXp == 0 ? 1 : Math.round(100*(user.totalXp/maxXP));
+                        user["barWidth"] = user["barWidth"] > 1 ? user["barWidth"] : 1;
                         user["usedName"] = user.name ? user.name : user.username;
                         user["roundedTotalXP"] = this.roundToOne(user.totalXp/1000);
                     })

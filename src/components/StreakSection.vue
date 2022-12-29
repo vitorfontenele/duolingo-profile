@@ -52,6 +52,7 @@
                     const maxStreak = sortedUsersData[0].streak;
                     sortedUsersData.map(user => {
                         user["barWidth"] = user.streak == 0 ? 1 : Math.round(100*(user.streak/maxStreak));
+                        user["barWidth"] = user["barWidth"] > 1 ? user["barWidth"] : 1;
                         user["usedName"] = user.name ? user.name : user.username;
                     })
                     return sortedUsersData;
