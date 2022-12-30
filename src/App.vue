@@ -5,7 +5,7 @@
         <div class="flex justify-center">
           <img class="w-3/5 h-auto sm:w-full" src="duo-owl.png" alt="Duolingo Owl">
         </div>
-        <div class="flex flex-col items-center gap-4 xl:gap-6">
+        <form class="flex flex-col items-center gap-4 xl:gap-6" @submit="compare">
           <h1 class="text-center font-semibold text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">Comparador de usuários do <span class="text-green-400">Duolingo</span></h1>
           <div class="w-full flex flex-col gap-4 xl:items-center">
             <div class="xl:w-2/5" v-for="(username, index) in usernames" :key="index">
@@ -14,15 +14,16 @@
                 v-model="usernames[index]" 
                 :id="`input-${index + 1}`" 
                 type="text"
-                placeholder="JohnDoe"
-                class="w-full text-gray-700 shadow border-2 rounded py-2 px-3 focus:outline-none focus:shadow-outline focus:border-blue-500"
-              >
+                :placeholder="`JohnDoe${index + 1}`"
+                required
+                class="w-full text-gray-700 shadow border-2 rounded py-2 px-3 focus:outline-none focus:shadow-outline focus:border-blue-500" 
+              />
             </div>     
           </div>
           <button 
             class="bg-blue-500 hover:bg-blue-700 text-white mt-4 py-2 px-4 w-fit rounded xl:py-4 xl:px-8" 
-            @click="compare">Comparar</button>
-        </div>
+            type="submit">Comparar</button>
+        </form>
       </section>
       <LoadingModal v-if="showLoadingModal" />
       <ErrorModal v-if="showErrorModal" @close-modal="closeModal" />
@@ -88,13 +89,19 @@
         },
         compare(e) {
             e.preventDefault();
-            //console.log("Comparar");
             this.fetchUserInfo();
         },
         closeModal(){
           this.showErrorModal = false;
         }
     },
-    components: { LoadingModal, ErrorModal, PersonalInfoSection, XPBarChartSection, StreakSection, XPByDaySection }
+    components: { 
+      LoadingModal, 
+      ErrorModal, 
+      PersonalInfoSection, 
+      XPBarChartSection, 
+      StreakSection, 
+      XPByDaySection 
+    }
 }
 </script>
