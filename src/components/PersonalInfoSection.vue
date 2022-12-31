@@ -1,9 +1,9 @@
 <template>
-    <section class="min-h-screen">
-        <h2 class="text-center font-semibold mb-4 text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">Informações básicas</h2>
-        <div class="flex flex-col gap-y-4 gap-x-4 sm:flex-row sm:justify-center">
-            <article class="relative flex flex-col items-center bg-neutral-50 shadow-xl gap-y-9 pt-8 sm:rounded sm:w-80" v-for="user in usersData">
-                <div class="sm:rounded-t absolute top-0 w-full bg-slate-700 h-[107px]"></div>
+    <section id="personal-info" class="min-h-screen">
+        <h2 class="text-center font-semibold mb-8 text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">Informações básicas</h2>
+        <div class="flex flex-col gap-y-8 gap-x-12 xl:gap-x-16 sm:flex-row sm:justify-center px-4">
+            <article class="relative flex flex-col items-center bg-neutral-50 shadow-xl gap-y-9 pt-8 sm:w-80" v-for="user in usersData">
+                <div class="rounded-t absolute top-0 w-full bg-slate-700 h-[107px]"></div>
                 <div class="relative">
                     <img 
                         :src="checkImage(user.picture)" 

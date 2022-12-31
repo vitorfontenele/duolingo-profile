@@ -1,11 +1,11 @@
 <template>
   <div class="bg-green-50">
     <div class="container mx-auto">
-      <section class="min-h-screen px-4 flex flex-col justify-center items-center gap-8 sm:flex-row lg:gap-x-16">
+      <section class="min-h-screen px-4 flex flex-col justify-center items-center gap-8 sm:flex-row lg:gap-x-16 2xl:gap-x-36" >
         <div class="flex justify-center">
           <img class="w-3/5 h-auto sm:w-full" src="duo-owl.png" alt="Duolingo Owl">
         </div>
-        <form class="flex flex-col items-center gap-4 xl:gap-6" @submit="compare">
+        <form class="flex flex-col items-center gap-4 xl:gap-6 lg:w-[52%]" @submit="compare">
           <h1 class="text-center font-semibold text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">Comparador de usuários do <span class="text-green-400">Duolingo</span></h1>
           <div class="w-full flex flex-col gap-4 xl:items-center">
             <div class="xl:w-2/5" v-for="(username, index) in usernames" :key="index">
