@@ -27,12 +27,10 @@
       </section>
       <LoadingModal v-if="showLoadingModal" />
       <ErrorModal v-if="showErrorModal" @close-modal="closeModal" />
-      <div v-if="showComparison">
-        <PersonalInfoSection :usersData="usersData" />
-        <XPBarChartSection :usersData="usersData" />
-        <StreakSection :usersData="usersData" /> 
-        <XPByDaySection :usersData="usersData"/>
-      </div>
+      <PersonalInfoSection v-if="showComparison" :usersData="usersData" />
+      <XPBarChartSection v-if="showComparison" :usersData="usersData" />
+      <StreakSection v-if="showComparison" :usersData="usersData" /> 
+      <XPByDaySection v-if="showComparison" :usersData="usersData"/>
     </div>
   </div>
 </template>

@@ -1,13 +1,13 @@
 <template>
-    <section class="flex items-center sm:items-start justify-center min-h-screen px-4">
-        <div class="flex flex-col gap-y-6">
+    <section class="flex items-center sm:items-start justify-center min-h-screen px-4 gap-x-6">
+        <div class="w-full flex flex-col gap-y-6 lg:w-3/5 xl:w-1/2">
             <h2 class="text-center font-semibold text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">Quem está na ofensiva mais longa?</h2>
             <div>
                 <div v-for="(user, index) in usersSortedByStreak">
                     <h5>{{ `${user.usedName} - ${user.streak} dias`}}</h5>
                     <div   
                         :style="`width: ${user.barWidth}%`"
-                        class="bg-orange-200 h-8 flex justify-between"
+                        class="bg-teal-200 h-8 flex justify-between"
                         :key="index"
                     >
                     </div>               
@@ -21,6 +21,12 @@
                 <p class="text-xl mb-4 lg:text-2xl xl:text-3xl">A ofensiva atual dos dois possui o mesmo número de dias.</p>
                 <p class="font-light">Portanto, a diferença de dias entre a ofensiva atual de ambos é zero.</p>
             </div>
+        </div>
+        <div class="hidden md:block">
+            <img 
+                src="lili-and-duo.png" 
+                alt="Group of Duolingo characters"
+            >
         </div>
     </section>
 </template>

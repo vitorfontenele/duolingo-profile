@@ -1,6 +1,12 @@
 <template>
-    <section class="flex items-center sm:items-start justify-center min-h-screen px-4">
-        <div class="flex flex-col gap-y-6">
+    <section class="flex items-center sm:items-start justify-center min-h-screen px-4 gap-x-6">
+        <div class="hidden md:block">
+            <img 
+                src="eddy-and-duo.png" 
+                alt="Group of Duolingo characters"
+            >
+        </div>
+        <div class="w-full flex flex-col gap-y-6 lg:w-3/5 xl:w-1/2">
             <h2 class="text-center font-semibold text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl">Quem ganha mais XP por dia?</h2>
             <div class="flex flex-col gap-y-4 gap-x-4 sm:flex-row sm:justify-center">
                 <div v-for="(user, index) in usersSortedByXPPerDay">
