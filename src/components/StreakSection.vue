@@ -24,7 +24,7 @@
         </div>
         <div class="hidden md:block">
             <img 
-                src="lili-and-duo.png" 
+                src="../../public/lili-and-duo.png" 
                 alt="Group of Duolingo characters"
             >
         </div>

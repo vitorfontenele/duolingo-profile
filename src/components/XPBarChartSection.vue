@@ -2,7 +2,7 @@
     <section class="flex items-center sm:items-start justify-center min-h-screen px-4 gap-x-6">
         <div class="hidden md:block">
             <img 
-                src="characters-group.png" 
+                src="../../public/characters-group.png" 
                 alt="Group of Duolingo characters"
             >
         </div>
