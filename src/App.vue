@@ -68,7 +68,7 @@
                 this.showErrorModal = true;
                 return;
               }
-              const URL = `https://www.duolingo.com/2017-06-30/users?username=${username}`;
+              const URL = 'https://corsproxy.io/?' + encodeURIComponent(`https://www.duolingo.com/2017-06-30/users?username=${username}`);
               try { 
                 const response = await axios.get(URL);
                 if (!response.data.users[0]){
